@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Report {
+  id                 Int      @id @default(autoincrement())
+  fazenda            String?   // ← agora opcional
+  mesReferencia      String?   // ← agora opcional
+  veterinario        String?   // ← agora opcional
+  observacoes        String?
+  taxaPrenhez        Int?
+  taxaConcepcao      Int?
+  taxaServico        Int?
+  partosPrevistos    Int?
+  inseminacoes       Int?
+  diagnosticosPos    Int?
+  matrizesExpostas   Int?
+  createdAt          DateTime @default(now())
+}
