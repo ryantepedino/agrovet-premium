@@ -3,15 +3,15 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Report {
-  id                 Int      @id @default(autoincrement())
-  fazenda            String?   // ← agora opcional
-  mesReferencia      String?   // ← agora opcional
-  veterinario        String?   // ← agora opcional
+  id                 Int       @id @default(autoincrement())
+  fazenda            String?   // opcional
+  mesReferencia      String?   // opcional
+  veterinario        String?   // opcional
   observacoes        String?
   taxaPrenhez        Int?
   taxaConcepcao      Int?
@@ -20,5 +20,5 @@ model Report {
   inseminacoes       Int?
   diagnosticosPos    Int?
   matrizesExpostas   Int?
-  createdAt          DateTime @default(now())
+  createdAt          DateTime  @default(now())
 }
